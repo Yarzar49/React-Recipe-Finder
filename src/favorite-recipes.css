@@ -1,0 +1,39 @@
+/* favorite-recipes.css */
+.favorite-recipes-container {
+    padding: 20px;
+  }
+  
+  .favorite-recipe-card {
+    border: none;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .favorite-recipe-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .favorite-recipe-image {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .favorite-recipe-title {
+    font-size: 1.25rem;
+  }
+  
+  .favorite-recipe-category {
+    color: #6c757d;
+    font-size: 0.9rem;
+  }
+  
+  .favorite-recipe-button {
+    width: 100%;
+  }
+  
+  /* Responsive classes */
+  @media (max-width: 576px) {
+    .favorite-recipe-card {
+      margin-bottom: 20px;
+    }
+  }
+  
