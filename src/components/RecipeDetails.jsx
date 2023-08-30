@@ -15,10 +15,9 @@ function RecipeDetails() {
     return <div>Recipe not found</div>;
   }
 
-  
   return (
     <Container className="recipe-details-container">
-      <Row >
+      <Row>
         <Col md={6}>
           <img
             src={selectedRecipe.strMealThumb}
@@ -28,19 +27,28 @@ function RecipeDetails() {
         </Col>
         <Col md={6}>
           <div className="recipe-details">
+            <Row>
+            <Col md={6}>
             <h3>{selectedRecipe.strMeal}</h3>
             <h6>Category: {selectedRecipe.strCategory}</h6>
             <h6>Area: {selectedRecipe.strArea}</h6>
+            </Col>
+            <Col md={6}>
             <h3>Ingredients:</h3>
-          <ul className="ingredients-list">
-            {Array.from({ length: 20 }, (_, index) => index + 1).map((index) => (
-              selectedRecipe[`strIngredient${index}`] && (
-                <li key={index}>
-                  {selectedRecipe[`strIngredient${index}`]} - {selectedRecipe[`strMeasure${index}`]}
-                </li>
-              )
-            ))}
-          </ul>
+            <ul className="ingredients-list">
+              {Array.from({ length: 20 }, (_, index) => index + 1).map(
+                (index) =>
+                  selectedRecipe[`strIngredient${index}`] && (
+                    <li key={index}>
+                      {selectedRecipe[`strIngredient${index}`]} -{" "}
+                      {selectedRecipe[`strMeasure${index}`]}
+                    </li>
+                  )
+              )}
+            </ul>
+            </Col>
+            </Row>
+            
           </div>
         </Col>
       </Row>
@@ -48,14 +56,14 @@ function RecipeDetails() {
         <Col>
           <h3>Instructions:</h3>
           <p>{selectedRecipe.strInstructions}</p>
-          <Button
-            className="recipe-button"
-            variant="primary"
-            
-          >
-            <FontAwesomeIcon icon={faHeart} size="lg" style={{ color: "red" }} />
+          {/* <Button className="recipe-button" variant="primary">
+            <FontAwesomeIcon
+              icon={faHeart}
+              size="lg"
+              style={{ color: "red" }}
+            />
             Added to Favorites
-          </Button>
+          </Button> */}
         </Col>
       </Row>
     </Container>

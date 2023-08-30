@@ -20,24 +20,21 @@ export const fetchRecipes = createAsyncThunk(
   }
 );
 
-// Add a selector to get the count of favorite recipes
-export const selectFavoriteCount = createSelector(
-  (state) => state.recipe.favorites,
-  (favorites) => favorites.length
-);
+
 
 const recipeSlice = createSlice({
   name: "recipe",
   initialState: {
     recipes: [],
-    favorites: [],
+    favorites: JSON.parse(localStorage.getItem('favorites')) || [],
     currentFavoriteCount: parseInt(localStorage.getItem("currentFavoriteCount")) || 0,
   },
   reducers: {
     addFavorite: (state, action) => {
       state.favorites.push(action.payload);
-      state.currentFavoriteCount += 1;
+      state.currentFavoriteCount += 1
       localStorage.setItem("currentFavoriteCount", state.currentFavoriteCount);
+      localStorage.setItem('favorites', JSON.stringify(state.favorites));
     },
     removeFavorite: (state, action) => {
       // Get the object from localStorage
@@ -55,11 +52,13 @@ const recipeSlice = createSlice({
       );
       state.currentFavoriteCount -= 1;
       localStorage.setItem("currentFavoriteCount", state.currentFavoriteCount);
+      localStorage.setItem('favorites', JSON.stringify(state.favorites));
     },
     // Action to initialize currentFavoriteCount
     initializeFavoriteCount: (state) => {
       state.currentFavoriteCount = parseInt(localStorage.getItem("currentFavoriteCount")) || 0;
     },
+  
   },
   extraReducers: (builder) => {
     builder.addCase(fetchRecipes.fulfilled, (state, action) => {

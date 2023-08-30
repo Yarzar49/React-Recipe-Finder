@@ -1,15 +1,17 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { removeFavorite } from '../recipeSlice';
-import { Card, Button, Col, Row } from 'react-bootstrap'; // Import React Bootstrap components
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFavorite  } from "../recipeSlice";
+import { Card, Button, Col, Row } from "react-bootstrap"; // Import React Bootstrap components
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons"; // Import FontAwesome icon
-import '../favorite-recipes.css'; // Import your custom CSS
+import "../favorite-recipes.css"; // Import your custom CSS
 
 function FavoriteRecipes() {
   const favorites = useSelector((state) => state.recipe.favorites);
   const dispatch = useDispatch();
+
+
 
   const handleRemoveFavorite = (recipe) => {
     dispatch(removeFavorite(recipe));
@@ -22,11 +24,17 @@ function FavoriteRecipes() {
         {favorites.map((recipe) => (
           <Col key={recipe.idMeal}>
             <Card className="favorite-recipe-card">
-              <Card.Img variant="top" src={recipe.strMealThumb} alt={recipe.strMeal} className="favorite-recipe-image" />
+              <Card.Img
+                variant="top"
+                src={recipe.strMealThumb}
+                alt={recipe.strMeal}
+                className="favorite-recipe-image"
+              />
               <Card.Body>
                 <Card.Title className="favorite-recipe-title">
-                  {recipe.strMeal}{}{" "}  
-                 <Link
+                  {recipe.strMeal}
+                  {}{" "}
+                  <Link
                     to={`/details/${recipe.idMeal}`}
                     style={{ textDecoration: "none" }}
                   >
@@ -36,8 +44,10 @@ function FavoriteRecipes() {
                       className="text-warning"
                     />
                   </Link>
-                  </Card.Title>
-                <Card.Text className="favorite-recipe-category">{recipe.strCategory}</Card.Text>
+                </Card.Title>
+                <Card.Text className="favorite-recipe-category">
+                  {recipe.strCategory}
+                </Card.Text>
                 <Button
                   onClick={() => handleRemoveFavorite(recipe)}
                   className="favorite-recipe-button"

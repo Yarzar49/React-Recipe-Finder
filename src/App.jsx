@@ -124,7 +124,7 @@ import RecipeList from './components/RecipeList'
 import FavoriteRecipes from './components/FavoriteRecipes'
 import { fetchRecipes} from './recipeSlice'
 import {Routes, Route, Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import RecipeDetails from './components/RecipeDetails';
 
 
