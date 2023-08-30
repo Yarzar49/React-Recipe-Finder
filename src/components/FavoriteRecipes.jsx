@@ -2,6 +2,9 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFavorite } from '../recipeSlice';
 import { Card, Button, Col, Row } from 'react-bootstrap'; // Import React Bootstrap components
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons"; // Import FontAwesome icon
 import '../favorite-recipes.css'; // Import your custom CSS
 
 function FavoriteRecipes() {
@@ -21,7 +24,19 @@ function FavoriteRecipes() {
             <Card className="favorite-recipe-card">
               <Card.Img variant="top" src={recipe.strMealThumb} alt={recipe.strMeal} className="favorite-recipe-image" />
               <Card.Body>
-                <Card.Title className="favorite-recipe-title">{recipe.strMeal}</Card.Title>
+                <Card.Title className="favorite-recipe-title">
+                  {recipe.strMeal}{}{" "}  
+                 <Link
+                    to={`/details/${recipe.idMeal}`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <FontAwesomeIcon
+                      icon={faInfoCircle}
+                      size="sm"
+                      className="text-warning"
+                    />
+                  </Link>
+                  </Card.Title>
                 <Card.Text className="favorite-recipe-category">{recipe.strCategory}</Card.Text>
                 <Button
                   onClick={() => handleRemoveFavorite(recipe)}

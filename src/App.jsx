@@ -125,6 +125,7 @@ import FavoriteRecipes from './components/FavoriteRecipes'
 import { fetchRecipes} from './recipeSlice'
 import {Routes, Route, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
+import RecipeDetails from './components/RecipeDetails';
 
 
 
@@ -142,6 +143,7 @@ function App() {
       <Routes>
         <Route index path='/' element={<RecipeList />}/>
         <Route path="/favorites" element={<FavoriteRecipes />}></Route>
+        <Route path="/details/:recipeId" element={<RecipeDetails />}></Route>
       </Routes>
     </div>
   );

@@ -35,7 +35,7 @@
   }
   
   .recipe-button {
-    background-color: #3490dc;
+    background-color: #2779bd!important;
     color: #fff;
     padding: 0.25rem 0.5rem;
     border: none;
@@ -45,7 +45,7 @@
   }
  
   .recipe-button:hover {
-    background-color: #2779bd;
+    background-color: #3490dc !important;
   }
   
   @media (max-width: 768px) {
